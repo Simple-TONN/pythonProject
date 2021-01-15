@@ -1,4 +1,4 @@
-import pprint
+from pprint import pprint
 
 person = int(input("введите количество гостей: "))
 pprint(f"Для обеда  на {person} человек. Требуется:")
@@ -41,8 +41,8 @@ cook_book = [
 
 ]
 
- for dish in cook_book:
-    pprint()
-    pprint(f"{dish[0]}:")
-    for ingredient in dish[1]:
+for dish in cook_book:
+   pprint("")
+   pprint(f"{dish[0]}:")
+   for ingredient in dish[1]:
         pprint(f"{ingredient[0]}, {ingredient[1] * person}{ingredient[2]}")
