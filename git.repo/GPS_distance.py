@@ -5,10 +5,10 @@ from math import pi,sqrt,sin,cos,atan2
 #n2 = 55.85152
 #e2 = 48.56731
 
-n1 = 55.81580
-e1 = 49.18116
-n2 = 55.85152
-e2 = 48.56731
+n2 = 55.81580
+e2 = 49.18116
+n1= 55.85152
+e1= 48.56731
 
 def haversine(n1,e1,n2,e2):
     lat1 = float(n1)
