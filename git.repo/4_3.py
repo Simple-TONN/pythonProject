@@ -22,3 +22,11 @@ for temp_count_queries in temp_dict.values():
         temp2[temp_count_queries] = 1
 
 print(temp2)
+print_list = []
+sum_proporcia100=0
+for count_queries,s_proporcia in temp2.items():
+    sum_proporcia100 = sum_proporcia100 + s_proporcia
+    print_list.append(f"")
+
+print(sum_proporcia100)
+
