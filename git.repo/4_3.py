@@ -9,24 +9,29 @@ queries = [
     'сериалы про спорт',
     'ffff'
 ]
-temp_dict = {}
+#считаем  количество  слов в кажом запросе и создаем словарь где  запрос является ключем и  количество слов в нем значением
+queries_dict = {}
 for temp in queries:
-    temp_dict[temp] = len(temp.split())
-print(temp_dict)
+    queries_dict[temp] = len(temp.split())
+print(queries_dict)
 
+# считаем  общее количество запроосов и создем ещё один словарь с ключем количество слов и  значением количество запросов
+proportion100=0
 temp2 = {}
-for temp_count_queries in temp_dict.values():
-    if temp_count_queries in temp2:
-        temp2[temp_count_queries] = temp2[temp_count_queries]+1
+for queries_dict_key, queries_dict_value in queries_dict.items():
+    proportion100 = proportion100 + queries_dict_value
+    if queries_dict_key in temp2:
+        temp2[queries_dict_value] = temp2[queries_dict_value]+1
     else:
-        temp2[temp_count_queries] = 1
+        temp2[queries_dict_value] = 1
 
 print(temp2)
 print_list = []
 sum_proporcia100=0
 for count_queries,s_proporcia in temp2.items():
-    sum_proporcia100 = sum_proporcia100 + s_proporcia
+    proportion100 = proportion100+ s_proporcia
     print_list.append(f"")
 
 print(sum_proporcia100)
+print((proportion100))
 
