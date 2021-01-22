@@ -30,6 +30,7 @@ for queries_dict_key, queries_dict_value in queries_dict.items():
 #print(count_queries_dict)
 #print(proportion100)
 
+#считаем пропортцию и выводим
 proportion = 0
 for count_queries_key, count_queries_value in count_queries_dict.items():
     proportion = count_queries_value*100/proportion100
