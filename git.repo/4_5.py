@@ -1,6 +1,6 @@
 from pprint import pprint
-#source = ['2018-01-01', 'yandex', 'cpc', 100]
-source = ['2018-01-01']
+source = ['2018-01-01', 'yandex', 'cpc', 100]
+#source = ['2018-01-01']
 if len(source)==1:
     print ("Словарь невозможен")
 else:
@@ -10,4 +10,4 @@ else:
         temp_dict = {source[-1]: temp_dict}
         del source[-1]
 
-pprint(temp_dict)
+print(temp_dict)
