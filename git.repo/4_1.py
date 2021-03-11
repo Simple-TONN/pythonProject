@@ -16,11 +16,8 @@ geo_logs = [
 Country = 'Россия'
 geo_logs_result =[]
 for geo in geo_logs:
-    #res = geo
     for visit, visit_info in geo.items():
-        #print(res1,res2)
         if Country in visit_info:
-            #print("rrrrrrrrrrrrr")
             geo_logs_result.append(geo)
 
 pprint(geo_logs_result)
