@@ -10,6 +10,7 @@ directories = {
     '3': []
 }
 
+
 def check_people(doc):
     find = False
     pasp = input("Please, insert document number: ")
@@ -20,8 +21,6 @@ def check_people(doc):
         if not find:
             out = ("document nof found")
     return out
-
-
 
 
 def find_shelf(shelf):
@@ -36,13 +35,9 @@ def find_shelf(shelf):
     return out
 
 
-
-
 def show_documents(doc):
     for docs in doc:
         print(f"{docs['type']} {docs['number']} {docs['name']}")
-
-
 
 
 def check_shelf(shelf, name):
@@ -52,11 +47,9 @@ def check_shelf(shelf, name):
         return False
 
 
-
-
 def add_shelf(shelf):
     name_shelf = input("Please, inter shelf name: ")
-    if check_shelf(shelf,name_shelf):
+    if check_shelf(shelf, name_shelf):
         out = 'name shelf alregy exist'
     else:
         out = 'Key added'
@@ -64,25 +57,21 @@ def add_shelf(shelf):
     return out
 
 
-
-
 def show_shelf():
     print(directories)
 
 
-
-
-def add_document(shelf,doc):
-    dict_temp={}
+def add_document(shelf, doc):
+    dict_temp = {}
     type_document = input("Please, insert document type: ")
     number_document = input("Please, insert document number: ")
     name_document = input("Please, insert document name: ")
-    name_shelf =  input("Please, inter shelf name: ")
-    if check_shelf(shelf,name_shelf):
+    name_shelf = input("Please, inter shelf name: ")
+    if check_shelf(shelf, name_shelf):
         shelf[name_shelf].append(name_document)
-        dict_temp['type']=type_document
-        dict_temp['number']=number_document
-        dict_temp['name']=name_document
+        dict_temp['type'] = type_document
+        dict_temp['number'] = number_document
+        dict_temp['name'] = name_document
         doc.append(dict_temp)
         out = "Document was added"
     else:
@@ -90,12 +79,10 @@ def add_document(shelf,doc):
     return out
 
 
-
-
-def delete_document(shelf,doc):
+def delete_document(shelf, doc):
     global documents
 
-############ For Shelf
+    ############ For Shelf
     number_document = input("Please, insert document number: ")
     for shelfs_key, shelfs_value in shelf.items():
         if number_document in shelfs_value:
@@ -109,7 +96,7 @@ def delete_document(shelf,doc):
     else:
         print('doc on shelf  not found')
 
-##### For  documents
+    ##### For  documents
     for docs in doc:
         if docs['number'] == number_document:
 
@@ -130,12 +117,23 @@ def delete_document(shelf,doc):
     documents = new_doc
 
 
+def move_document(doc):
 
-
-
-
-
-
+    number_document = input("Please, insert document number: ")
+    name_shelf = input("Please, inter shelf name: ")
+    Check_document = ""
+    Check_Shelf = ""
+    for dir_key, dir_value in directories.items():
+        if number_document in dir_value:
+            Check_document = dir_key
+        if dir_key == name_shelf:
+            Check_Shelf = dir_key
+    if Check_document == '':
+        return 'error document'
+    elif Check_Shelf == '':
+        return 'error polka'
+    directories[Check_Shelf] += [directories[Check_document].pop(directories[Check_document].index(number_document))]
+    return 'ok'
 
 
 def core(commanda):
@@ -146,19 +144,17 @@ def core(commanda):
     elif commanda == "l":
         show_documents(documents)
     elif commanda == "a":
-        print(add_document(directories,documents))
+        print(add_document(directories, documents))
     elif commanda == "d":
         print("delete")
         delete_document(directories, documents)
+    elif commanda == "m":
+        print(move_document(directories))
     elif commanda == "as":
         print(add_shelf(directories))
 
     elif commanda == "ss":
         show_shelf()
-
-
-
-
 
 
 command = input("Please insert command: ")
@@ -167,4 +163,3 @@ while command != 'e':
     command = input("Please insert command: ")
 else:
     print("done")
-
