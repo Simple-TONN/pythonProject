@@ -123,7 +123,7 @@ def move_document(doc):
     name_shelf = input("Please, inter shelf name: ")
     Check_document = ""
     Check_Shelf = ""
-    for dir_key, dir_value in directories.items():
+    for dir_key, dir_value in doc.items():
         if number_document in dir_value:
             Check_document = dir_key
         if dir_key == name_shelf:
@@ -132,7 +132,7 @@ def move_document(doc):
         return 'error document'
     elif Check_Shelf == '':
         return 'error polka'
-    directories[Check_Shelf] += [directories[Check_document].pop(directories[Check_document].index(number_document))]
+    doc[Check_Shelf] += [doc[Check_document].pop(doc[Check_document].index(number_document))]
     return 'ok'
 
 
