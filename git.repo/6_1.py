@@ -1,3 +1,5 @@
+from pprint import pprint
+import os,time
 class Student:
     def __init__(self, name, surname, gender):
         self.name = name
@@ -34,4 +36,5 @@ cool_mentor.rate_hw(best_student, 'Python', 10)
 cool_mentor.rate_hw(best_student, 'Python', 10)
 cool_mentor.rate_hw(best_student, 'Python', 10)
 
-print(best_student.grades)
+pprint(best_student.grades)
+
