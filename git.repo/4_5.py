@@ -1,4 +1,4 @@
-from pprint import pprint
+
 source = ['2018-01-01', 'yandex', 'cpc', 100]
 #source = ['2018-01-01']
 if len(source)==1:
