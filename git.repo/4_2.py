@@ -9,4 +9,5 @@ for list_number in ids.values():
     set_results = set_results.union(set(list_number))
 for set_result in set_results:
     list_result.append(set_result)
+
 print(list_result)
