@@ -1,4 +1,6 @@
 from pprint import pprint
+
+
 def read_book(file='recipes.txt'):
     from pprint import pprint
 
@@ -24,44 +26,25 @@ def read_book(file='recipes.txt'):
     return cool_book
 
 
-#pprint(read_book())
+pprint(read_book())
 
 
 def get_shop_list_by_dishes(dishes, person_count):
-    fin_dish = {}
     result_dish = {}
     book = read_book()
-
     for dish in dishes:
         if dish in book:
-            #print(dish)
-            temp_name_dish = {}
             for each_ind in book[dish]:
-                print("sssss",each_ind)
-
-
-                if each_ind["ingredient_name"] in temp_name_dish.keys():
-                    fin_dish['ingredient_name'] = each_ind["ingredient_name"]
-                    #print(each_ind["ingredient_name"])
-                    print(each_ind["quantity"])
-                    print(fin_dish['quantity'])
-                    fin_dish['quantity'] = int(fin_dish['quantity'])+int(each_ind["quantity"])
-                    print(fin_dish['quantity'])
-                    fin_dish['measure'] = each_ind["measure"]
+                if each_ind['ingredient_name'] in result_dish:
+                    temp_quantity =result_dish[each_ind['ingredient_name']]['quantity']
+                    result_dish[each_ind['ingredient_name']] ={'measure':each_ind['measure'],'quantity':(int(each_ind['quantity'])*int(person_count))+int(temp_quantity) }
                 else:
-                    temp_name_dish[each_ind["ingredient_name"]] = 56787867
-                    fin_dish['ingredient_name'] = each_ind["ingredient_name"]
-                    fin_dish['quantity'] = each_ind["quantity"]
-                    fin_dish['measure'] = each_ind["measure"]
-                result_dish[fin_dish['ingredient_name']] = {'measure':fin_dish['measure'], 'quantity': int(fin_dish['quantity'])*person_count }
-        #print(temp_name_dish)
-        #print(fin_dish)
-        else:
-            print(f"net dishes{dish}")
+                    result_dish[each_ind['ingredient_name']] = {'measure': each_ind['measure'],
+                                                             'quantity': int(each_ind['quantity'])*int(person_count)}
     pprint(result_dish)
 
-#dishes_list = ["Омлет", "Фахитос"]
-#dishes_list = ['Запеченный картофель', 'Омлет']
+
+
 
 get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'],2)
-get_shop_list_by_dishes(["Омлет", "Фахитос"],3)
+#get_shop_list_by_dishes(["Омлет", 'Фахитос'], 3)
