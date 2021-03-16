@@ -26,9 +26,7 @@ class YaUploader:
         # Тут ваша логика
         res_get = requests.get('https://cloud-api.yandex.net/v1/disk/resources/upload',
                                headers={'Authorization': f'OAuth {self.token}'},
-                               params={'path': file_name, 'fields': 'href','overwrite':True }, )
-        print(res_get.status_code)
-        print(res_get.text)
+                               params={'path': file_name, 'fields': 'href', 'overwrite': True}, )
         link = res_get.json()['href']
         if res_get.status_code != 200:
             return "Ошибка на этапе получения ссылки"
@@ -36,7 +34,7 @@ class YaUploader:
             with open(get_path(file_name), 'rb') as file:
                 res_put = requests.put(link, files={'file': file})
                 if res_put.status_code != 201:
-                    return f"Ошибка загрузки {res_put.status_code}"
+                    return "Ошибка загрузки"
                 else:
                     return 'Вернуть ответ об успешной загрузке'
 
@@ -45,4 +43,3 @@ if __name__ == '__main__':
     uploader = YaUploader(insert_token())
     result = uploader.upload(get_path(file_name))
     print(result)
-
