@@ -1,6 +1,8 @@
 import os
+import requests
 
-file_name = '1.txt'
+file_name = 'test.txt'
+
 
 def get_path(file):
     check = f'{os.getcwd()}\{file}'
@@ -10,6 +12,10 @@ def get_path(file):
         return 'Ошибка фаил не найден'
 
 
+def insert_token():
+    with open('C:\my\\tok.txt') as file:
+        return (file.read().splitlines()[0])
+
 
 class YaUploader:
     def __init__(self, token: str):
@@ -18,12 +24,25 @@ class YaUploader:
     def upload(self, file_path: str):
         """Метод загруджает файл file_path на яндекс диск"""
         # Тут ваша логика
-        return 'Вернуть ответ об успешной загрузке'
+        res_get = requests.get('https://cloud-api.yandex.net/v1/disk/resources/upload',
+                               headers={'Authorization': f'OAuth {self.token}'},
+                               params={'path': file_name, 'fields': 'href','overwrite':True }, )
+        print(res_get.status_code)
+        print(res_get.text)
+        link = res_get.json()['href']
+        if res_get.status_code != 200:
+            return "Ошибка на этапе получения ссылки"
+        else:
+            with open(get_path(file_name), 'rb') as file:
+                res_put = requests.put(link, files={'file': file})
+                if res_put.status_code != 201:
+                    return f"Ошибка загрузки {res_put.status_code}"
+                else:
+                    return 'Вернуть ответ об успешной загрузке'
 
 
 if __name__ == '__main__':
-    uploader = YaUploader('<Your Yandex Disk token>')
+    uploader = YaUploader(insert_token())
     result = uploader.upload(get_path(file_name))
+    print(result)
 
-
-print(get_path(file_name))
