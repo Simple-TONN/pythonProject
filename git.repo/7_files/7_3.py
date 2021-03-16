@@ -11,6 +11,7 @@ for each_file in file_list:
     file.close()
 text_info.sort()
 
+
 with open('result.txt', 'w') as file:
     for each_text in text_info:
         file.write(str(each_text[2]) + '\n')
