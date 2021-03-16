@@ -1,6 +1,4 @@
 import requests
-import pprint
-import json
 
 token = "2619421814940190"
 
