@@ -12,9 +12,15 @@ def get_path(file):
         return 'Ошибка фаил не найден'
 
 
-def insert_token():
+def insert_token(type):
     with open('C:\my\\tok.txt') as file:
-        return (file.read().splitlines()[0])
+        if type == 'YD':
+            return (file.read().splitlines()[0])
+        elif type == 'VK':
+            return (file.read().splitlines()[1])
+        else:
+            return f'Неверный тип токена: {type}'
+
 
 
 class YaUploader:
