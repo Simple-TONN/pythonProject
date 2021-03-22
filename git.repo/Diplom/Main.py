@@ -87,12 +87,6 @@ class MainVkApi:
 
 
 
-
-
-
-
-
-
 vas = MainVkApi(YD.insert_token('VK'))
 #vas.getgroups_vk('644850263')
 #vas.getalbum_vk('4613289')

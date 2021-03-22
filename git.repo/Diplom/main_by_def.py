@@ -46,6 +46,5 @@ def getalbum_vk(iduser):
     resp_album = requests.get(url, params=param)
     return (resp_album.json())
 
-
 #pprint(getgroups_vk('644850263'))
 print(getalbum_vk("begemot_korovin"))

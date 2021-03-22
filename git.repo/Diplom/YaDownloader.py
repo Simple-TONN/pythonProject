@@ -24,7 +24,6 @@ def insert_token(type):
             return f'Неверный тип токена: {type}'
 
 
-
 class YaUploader:
     def __init__(self, token: str):
         self.token = token
