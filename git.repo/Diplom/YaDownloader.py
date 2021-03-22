@@ -18,6 +18,8 @@ def insert_token(type):
             return (file.read().splitlines()[0])
         elif type == 'VK':
             return (file.read().splitlines()[1])
+        elif type == 'K':
+            return (file.read().splitlines()[2])
         else:
             return f'Неверный тип токена: {type}'
 
